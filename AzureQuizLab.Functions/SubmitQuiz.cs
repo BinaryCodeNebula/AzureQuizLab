@@ -16,8 +16,11 @@ public class SubmitQuiz
     {
         _logger = logger;
         string connectionString = Environment.GetEnvironmentVariable("AzureWebJobsStorage");
-        _queueClient = new QueueClient(connectionString, "quiz-queue");
-
+        //_queueClient = new QueueClient(connectionString, "quiz-queue");
+        _queueClient = new QueueClient(connectionString, "quiz-queue", new QueueClientOptions
+        {
+            MessageEncoding = QueueMessageEncoding.Base64
+        });
         _queueClient.CreateIfNotExists();
     }
 
@@ -37,6 +40,7 @@ public class SubmitQuiz
 
         // Sérialisation JSON
         string message = JsonSerializer.Serialize(quiz);
+        _queueClient.SendMessage(message);
 
         _logger.LogInformation("Quiz soumis");
         return new OkObjectResult("Quiz soumis!");
