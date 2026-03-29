@@ -16,7 +16,7 @@ public class SubmitQuiz
     {
         _logger = logger;
         string connectionString = Environment.GetEnvironmentVariable("AzureWebJobsStorage");
-        //_queueClient = new QueueClient(connectionString, "quiz-queue");
+        // _queueClient = new QueueClient(connectionString, "quiz-queue");
         _queueClient = new QueueClient(connectionString, "quiz-queue", new QueueClientOptions
         {
             MessageEncoding = QueueMessageEncoding.Base64
