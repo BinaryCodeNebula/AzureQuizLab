@@ -24,6 +24,7 @@ namespace AzureQuizLab.Pages
 
         public void OnGet()
         {
+
             MaintenanceMode = _configuration.GetValue<bool>("MaintenanceMode", false);
 
             QuizCount = _context.Quizzes.Count();
