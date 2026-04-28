@@ -45,10 +45,6 @@ namespace AzureQuizLab
                 }
 
                 options.UseSqlServer(sqlConnectionStringBuilder.ConnectionString);
-
-                //options.UseSqlServer(
-                //    sqlConnectionStringBuilder.ConnectionString,
-                //    sqlOptions => sqlOptions.EnableRetryOnFailure());
             });
 
 
