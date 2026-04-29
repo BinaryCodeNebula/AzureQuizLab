@@ -1,5 +1,6 @@
 using Azure.Identity;
 using AzureQuizLab.Models;
+using AzureQuizLab.Services;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 
@@ -13,6 +14,8 @@ namespace AzureQuizLab
 
             // Add services to the container.
             builder.Services.AddRazorPages();
+
+            builder.Services.AddScoped<BlobService>();
 
             //builder.Services.AddDbContext<QuizDbContext>(options =>
             //    options.UseSqlServer(
