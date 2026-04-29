@@ -20,9 +20,9 @@ public class BlobService
 
     public BlobService(IConfiguration config, IHostEnvironment env)
     {
-        TokenCredential credential = env.IsDevelopment()
-            ? new AzureCliCredential()
-            : new ManagedIdentityCredential();
+        TokenCredential credential = new ChainedTokenCredential(
+            new ManagedIdentityCredential(),
+            new AzureCliCredential());
 
         var serviceClient = new BlobServiceClient(
             new Uri(config["Storage:Url"]!),
