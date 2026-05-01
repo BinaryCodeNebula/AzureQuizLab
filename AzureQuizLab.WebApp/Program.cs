@@ -55,6 +55,10 @@ namespace AzureQuizLab
             builder.Logging.AddConsole();
             builder.Logging.AddAzureWebAppDiagnostics();
 
+            builder.Services
+                .AddApplicationInsightsTelemetryWorkerService()
+                .ConfigureFunctionsApplicationInsights();
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
