@@ -56,8 +56,7 @@ namespace AzureQuizLab
             builder.Logging.AddAzureWebAppDiagnostics();
 
             builder.Services
-                .AddApplicationInsightsTelemetryWorkerService()
-                .ConfigureFunctionsApplicationInsights();
+                .AddApplicationInsightsTelemetryWorkerService();
 
             var app = builder.Build();
 
